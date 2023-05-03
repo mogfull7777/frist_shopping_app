@@ -74,6 +74,7 @@ const Main = () => {
     return (
         <>
             {/*  benner img  */}
+
             <Carousel fade>
                 {carouselItem && carouselItem.map(item => (
                     <Carousel.Item>
@@ -88,7 +89,7 @@ const Main = () => {
                             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                         </Carousel.Caption>
                     </Carousel.Item>
-                ))};
+                ))}
             </Carousel>
 
             {/*  product list  */}

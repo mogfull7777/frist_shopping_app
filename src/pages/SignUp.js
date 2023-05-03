@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import axios, {post} from "axios";
 
 const SignUp = () => {
+
+    const navigate = useNavigate();
 
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -24,13 +27,26 @@ const SignUp = () => {
 
 
             const userInput = {
-                username : username,
+                name : username,
                 email : email,
                 password : password,
                 isCheckBox : isCheckBox
             }
 
-            console.log(userInput)
+            const result = await axios.post("http://localhost:9090/api/users/", userInput)
+
+
+            if (result.status === 201){
+
+                alert("success signup")
+
+                navigate("/login")
+
+            }
+
+            console.log("**************", result)
+
+            // console.log(userInput)
 
         } catch (err) {
             console.log(err)
